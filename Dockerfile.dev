@@ -1,0 +1,18 @@
+FROM golang:1.22 as builder
+
+WORKDIR /app
+
+RUN go install github.com/cosmtrek/air@latest
+
+#retrieve application dependencies, copy go.mod & go.sum
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
+
+#copy local code to the container image
+COPY . ./ 
+
+#print packages when building the binary
+RUN CGO_ENABLED=0 go build -v -o ./tmp/main ./api
+
+ENTRYPOINT ["air"]

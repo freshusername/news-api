@@ -31,3 +31,24 @@ There should be startup instructions. Ideally, this is a Makefile for assembly a
 The following will be assessed:
 - Organization of the API
 - Tests (successful and failed cases)
+---
+### Tech stack
+- Postgres for DB
+- Docker compose for local development
+- Air for hot reload
+- 
+
+### How to run
+1. You should create .env.local in root folder and paste these secrets:
+```
+DB_USER=postgres
+DB_PASSWORD=admin
+DB_NAME=news
+DB_PORT=5432
+DB_HOST=db #changed during deployment, from docker-compose if local development
+
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=admin
+POSTGRES_DB=news
+```
+2. Run make docker-up to start api and db locally

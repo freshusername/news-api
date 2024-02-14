@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./
+    env_file:
+      - .env.local
+    restart: always
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    deploy:
+      mode: replicated
+      replicas: 1
+    #command: "air main.go" #-b 0.0.0.0 #air main.go -b 0.0.0.0
+  db:
+    image: postgres:latest
+    env_file:
+      - .env.local
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
