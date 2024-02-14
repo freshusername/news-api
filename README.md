@@ -20,8 +20,8 @@ Tests are required.
 ### It will be an advantage:
 - [x] Use PostgreSQL
 - [x] Makefile
-- [] Data validation
-- [] Migration
+- [x] Data validation (using reflection)
+- [x] Migration (using Goose)
 - [] OpenAPI specification
 - [x] REST microservice
 

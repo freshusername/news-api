@@ -3,10 +3,12 @@ package main
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
 	"strconv"
 
 	"github.com/freshusername/news-api/models"
+	"github.com/freshusername/news-api/validation"
 	"github.com/go-chi/chi/v5"
 )
 
@@ -16,7 +18,24 @@ func (app *application) HandleCreatePost(w http.ResponseWriter, r *http.Request)
 	// Decode the request body into post
 	err := json.NewDecoder(r.Body).Decode(post)
 	if err != nil {
-		app.errorJSON(w, err, http.StatusInternalServerError)
+		app.errorJSON(w, err, http.StatusBadRequest)
+		return
+	}
+
+	//validate
+	validator := validation.NewValidator()
+	validator.AddRule("Title", validation.Required())
+	validator.AddRule("Title", validation.Length(1, 255))
+	validator.AddRule("Content", validation.Required())
+	validator.AddRule("Content", validation.Length(1, 500))
+
+	errors := validator.Validate(post)
+
+	if len(errors) > 0 {
+		w.WriteHeader(http.StatusBadRequest)
+		for _, err := range errors {
+			fmt.Fprintf(w, "%s\n", err.PrintError())
+		}
 		return
 	}
 
@@ -62,6 +81,23 @@ func (app *application) HandleUpdatePost(w http.ResponseWriter, r *http.Request)
 	err = json.NewDecoder(r.Body).Decode(&post)
 	if err != nil {
 		app.errorJSON(w, err, http.StatusBadRequest)
+		return
+	}
+
+	//validate
+	validator := validation.NewValidator()
+	validator.AddRule("Title", validation.Required())
+	validator.AddRule("Title", validation.Length(1, 255))
+	validator.AddRule("Content", validation.Required())
+	validator.AddRule("Content", validation.Length(1, 500))
+
+	errors := validator.Validate(post)
+
+	if len(errors) > 0 {
+		w.WriteHeader(http.StatusBadRequest)
+		for _, err := range errors {
+			fmt.Fprintf(w, "%s\n", err.PrintError())
+		}
 		return
 	}
 
