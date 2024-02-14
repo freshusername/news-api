@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "0a85146a-4709-420f-bf4d-94e14cd3aa73",
+		"name": "news-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32453494"
+	},
+	"item": [
+		{
+			"name": "GET all posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/news",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"newly created post\",\n    \"content\": \"content for newly created post\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/news",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE post by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"newly updated post\",\n    \"content\": \"content for newly updated post\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/news/2",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"news",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request Copy 3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/news/4",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"news",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

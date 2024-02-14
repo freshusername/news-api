@@ -11,18 +11,19 @@ Requirements for the task:
 - PUT /posts/{id}
 - GET /posts/{id}
 - DELETE /posts/{id}
+
 Post minimum contains: id, title, content, created_at,
 updated_at.
 
 Tests are required.
 
 ### It will be an advantage:
-- Use PostgreSQL
-- Makefile
-- Data validation
-- Migration
-- OpenAPI specification
-- REST microservice
+- [x] Use PostgreSQL
+- [x] Makefile
+- [] Data validation
+- [] Migration
+- [] OpenAPI specification
+- [x] REST microservice
 
 Upload the code to Github.
 
@@ -52,3 +53,10 @@ POSTGRES_PASSWORD=admin
 POSTGRES_DB=news
 ```
 2. Run make docker-up to start api and db locally
+3. Apply Goose migration:
+    - Install Goose locally
+    - Run migration with your connection string ([instructions here](https://betterprogramming.pub/searching-for-best-approach-in-go-migrations-c3fa52afadb0))
+    - `export GOOSE_DRIVER=postgres`
+    - `export GOOSE_DBSTRING=postgresql://postgres:admin@127.0.0.1:5432/news?sslmode=disable`
+    - `make migrate-up`
+4. Once you have up and running both your containers: ![docker containers](image.png) You can start making requests to app on port 3000. See postman collection attached in /postman folder.

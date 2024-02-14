@@ -1,3 +1,6 @@
+-- +goose Up
+-- +goose StatementBegin
+SELECT 'up SQL query';
 CREATE TABLE public.posts (
     id integer NOT NULL,
     title character varying(255),
@@ -28,3 +31,9 @@ values(
     );
 ALTER TABLE ONLY public.posts
 ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+-- +goose StatementEnd
+-- +goose Down
+-- +goose StatementBegin
+SELECT 'down SQL query';
+DROP TABLE posts;
+-- +goose StatementEnd
