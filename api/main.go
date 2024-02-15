@@ -12,14 +12,14 @@ import (
 
 const port = 3000
 
-type application struct {
+type Application struct {
 	DSN string
 	DB  database.DatabaseRepo
 }
 
 func main() {
-	// set application config
-	var app application
+	// set Application config
+	var app Application
 
 	// read from command line
 	dbName := os.Getenv("DB_NAME")
@@ -41,7 +41,7 @@ func main() {
 	app.DB = &database.PostgresDBRepo{DB: conn}
 	defer app.DB.Connection().Close()
 
-	log.Println("Starting application on port", port)
+	log.Println("Starting Application on port", port)
 
 	// start a web server
 	err = http.ListenAndServe(fmt.Sprintf(":%d", port), app.routes())

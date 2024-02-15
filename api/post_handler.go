@@ -35,7 +35,7 @@ import (
 //	  description: "Validation error"
 //	"500":
 //	  description: "Internal server error."
-func (app *application) HandleCreatePost(w http.ResponseWriter, r *http.Request) {
+func (app *Application) HandleCreatePost(w http.ResponseWriter, r *http.Request) {
 	post := new(models.Post)
 
 	// Decode the request body into post
@@ -87,7 +87,7 @@ func (app *application) HandleCreatePost(w http.ResponseWriter, r *http.Request)
 //	    type: array
 //	    items:
 //	      "$ref": "#/definitions/Post"
-func (app *application) HandleGetPosts(w http.ResponseWriter, r *http.Request) {
+func (app *Application) HandleGetPosts(w http.ResponseWriter, r *http.Request) {
 	posts, err := app.DB.GetAllPosts()
 	if err != nil {
 		app.errorJSON(w, err)
@@ -126,7 +126,7 @@ func (app *application) HandleGetPosts(w http.ResponseWriter, r *http.Request) {
 //	  description: "Validation error"
 //	"500":
 //	  description: "Internal server error"
-func (app *application) HandleUpdatePost(w http.ResponseWriter, r *http.Request) {
+func (app *Application) HandleUpdatePost(w http.ResponseWriter, r *http.Request) {
 	// Extract the item ID from the URL using Chi's URLParam function
 	idString := chi.URLParam(r, "id")
 	if idString == "" {
@@ -198,7 +198,7 @@ func (app *application) HandleUpdatePost(w http.ResponseWriter, r *http.Request)
 //	  description: "missing item id"
 //	"500":
 //	  description: "Internal server error"
-func (app *application) HandleDeletePost(w http.ResponseWriter, r *http.Request) {
+func (app *Application) HandleDeletePost(w http.ResponseWriter, r *http.Request) {
 	// Extract the item ID from the URL using Chi's URLParam function
 	idString := chi.URLParam(r, "id")
 	if idString == "" {

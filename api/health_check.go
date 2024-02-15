@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func (app *application) HealthCheck(w http.ResponseWriter, r *http.Request) {
+func (app *Application) HealthCheck(w http.ResponseWriter, r *http.Request) {
 	var payload = struct {
 		Status  string `json:"status"`
 		Message string `json:"message"`
