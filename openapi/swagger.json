@@ -1,0 +1,83 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/posts": {
+      "get": {
+        "description": "Retrieve a list of all posts.",
+        "tags": [
+          "posts"
+        ],
+        "summary": "List all posts",
+        "operationId": "listPosts"
+      },
+      "post": {
+        "description": "This will create a new post based on the data provided in the request body.",
+        "tags": [
+          "posts"
+        ],
+        "summary": "Creates a new post.",
+        "operationId": "createPost",
+        "parameters": [
+          {
+            "$ref": "#/definitions/Post",
+            "description": "The post to create.",
+            "name": "post",
+            "in": "body",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/posts/{id}": {
+      "put": {
+        "description": "Update the details of an existing post by ID.",
+        "tags": [
+          "posts"
+        ],
+        "summary": "Update a post",
+        "operationId": "updatePost",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "ID of the post to update",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "$ref": "#/definitions/Post",
+            "description": "The post data to update",
+            "name": "post",
+            "in": "body",
+            "required": true
+          }
+        ]
+      },
+      "delete": {
+        "description": "Delete an existing post by ID.",
+        "tags": [
+          "posts"
+        ],
+        "summary": "Delete a post",
+        "operationId": "deletePost",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "ID of the post to delete",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Post": {
+      "description": "Post model",
+      "x-go-package": "github.com/freshusername/news-api/models"
+    }
+  }
+}

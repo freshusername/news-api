@@ -3,7 +3,6 @@ package validation
 import (
 	"fmt"
 	"reflect"
-	"regexp"
 )
 
 // ValidationError wraps a validation rule error
@@ -87,20 +86,6 @@ func Length(min, max int) Rule {
 		}
 		if len(str) < min || len(str) > max {
 			return &ValidationError{Error: fmt.Sprintf("must be between %d and %d characters", min, max)}
-		}
-		return nil
-	}
-}
-
-// Email validates the string is a valid email format
-func Email() Rule {
-	return func(value interface{}) *ValidationError {
-		str, ok := value.(string)
-		if !ok {
-			return &ValidationError{Error: "is not a valid string"}
-		}
-		if match, _ := regexp.MatchString(`^\S+@\S+\.\S+$`, str); !match {
-			return &ValidationError{Error: "is not a valid email address"}
 		}
 		return nil
 	}

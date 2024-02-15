@@ -12,12 +12,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{local}}/news",
+					"raw": "{{local}}/posts",
 					"host": [
 						"{{local}}"
 					],
 					"path": [
-						"news"
+						"posts"
 					]
 				}
 			},
@@ -30,7 +30,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"newly created post\",\n    \"content\": \"content for newly created post\"\n}",
+					"raw": "{\n    \"title\": \"h\",\n    \"content\": \"content for newly created post\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -38,12 +38,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{local}}/news",
+					"raw": "{{local}}/posts",
 					"host": [
 						"{{local}}"
 					],
 					"path": [
-						"news"
+						"posts"
 					]
 				}
 			},
@@ -64,12 +64,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{local}}/news/2",
+					"raw": "{{local}}/posts/2",
 					"host": [
 						"{{local}}"
 					],
 					"path": [
-						"news",
+						"posts",
 						"2"
 					]
 				}
@@ -77,18 +77,35 @@
 			"response": []
 		},
 		{
-			"name": "New Request Copy 3",
+			"name": "DELETE post",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{local}}/news/4",
+					"raw": "{{local}}/posts/3",
 					"host": [
 						"{{local}}"
 					],
 					"path": [
-						"news",
-						"4"
+						"posts",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET swagger specification",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/swagger",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"swagger"
 					]
 				}
 			},

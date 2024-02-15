@@ -22,7 +22,7 @@ Tests are required.
 - [x] Makefile
 - [x] Data validation (using reflection)
 - [x] Migration (using Goose)
-- [] OpenAPI specification
+- [x] OpenAPI specification (using go-swagger)
 - [x] REST microservice
 
 Upload the code to Github.
@@ -60,3 +60,5 @@ POSTGRES_DB=news
     - `export GOOSE_DBSTRING=postgresql://postgres:admin@127.0.0.1:5432/news?sslmode=disable`
     - `make migrate-up`
 4. Once you have up and running both your containers: ![docker containers](image.png) You can start making requests to app on port 3000. See postman collection attached in /postman folder.
+5. Swagger OPENAPI specification is available at GET http://localhost:3000/swagger
+
