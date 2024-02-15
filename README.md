@@ -3,7 +3,7 @@ News CRUD microservice written in Golang
 
 Requirements for the task:
 
-- Write a Golang microservice for CRUD operations with news.
+- [x] Write a Golang microservice for CRUD operations with news.
 
 ### Approximate structure of the API:
 - POST /posts
@@ -12,10 +12,10 @@ Requirements for the task:
 - GET /posts/{id}
 - DELETE /posts/{id}
 
-Post minimum contains: id, title, content, created_at,
+- [x] Post minimum contains: id, title, content, created_at,
 updated_at.
 
-Tests are required.
+- [x] Tests are required. (using testcontainers-go for spinning postgres docker containers)
 
 ### It will be an advantage:
 - [x] Use PostgreSQL

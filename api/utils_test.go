@@ -34,7 +34,7 @@ func TestWriteJSON(t *testing.T) {
 	}
 
 	// Check the response content type is JSON.
-	expectedContentType := "Application/json"
+	expectedContentType := "application/json"
 	if contentType := rr.Header().Get("Content-Type"); contentType != expectedContentType {
 		t.Errorf("writeJSON returned wrong Content-Type header: got %v want %v", contentType, expectedContentType)
 	}
